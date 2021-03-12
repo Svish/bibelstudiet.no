@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-900 antialiased bg-gray-50;
+    @apply overflow-y-scroll;
+  }
+
+  /** Default focus rings **/
+  [type='text']:focus,
+  [type='email']:focus,
+  [type='url']:focus,
+  [type='password']:focus,
+  [type='number']:focus,
+  [type='date']:focus,
+  [type='datetime-local']:focus,
+  [type='month']:focus,
+  [type='search']:focus,
+  [type='tel']:focus,
+  [type='time']:focus,
+  [type='week']:focus,
+  [multiple]:focus,
+  main a:focus,
+  textarea:focus,
+  select:focus,
+  button:focus {
+    @apply focus-secondary;
+  }
+
+  .focus-primary {
+    @apply focus:outline-none focus:ring-primary-500 focus:ring-offset-2 focus:ring-2;
+  }
+
+  .focus-secondary {
+    @apply focus:outline-none focus:ring-secondary-500 focus:ring-offset-2 focus:ring-2;
+  }
+
+  /* TODO: https://github.com/tailwindlabs/tailwindcss-typography/issues/146 */
+  /** Prose: Definition lists **/
+  .prose dl {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+
+  .prose dt {
+    @apply font-semibold;
+  }
+
+  .prose dd {
+    @apply relative;
+    padding-left: 1.75em;
+  }
+
+  .prose dd + dt {
+    margin-top: 0.75em;
+  }
+
+  .prose dd::before {
+    content: '';
+    @apply absolute bg-gray-300 rounded-full;
+    width: 0.375em;
+    height: 0.375em;
+    top: calc(0.875em - 0.1875em);
+    left: 0.25em;
+  }
+}

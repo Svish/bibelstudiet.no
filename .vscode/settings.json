@@ -1,0 +1,9 @@
+{
+  "search.exclude": {
+    "package-lock.json": true
+  },
+  "files.exclude": {
+    ".next": true,
+    "*cache": true
+  }
+}
