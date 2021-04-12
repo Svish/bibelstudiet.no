@@ -7,6 +7,7 @@ import { isDev } from 'env';
 import { useBreakpointDebug } from 'util/breakpoints';
 
 import Layout from 'components/layout/Layout';
+import { ThemeProvider } from 'next-themes';
 
 export default function MyApp({
   Component,
@@ -15,7 +16,7 @@ export default function MyApp({
   const breakpointDebug = useBreakpointDebug();
 
   return (
-    <>
+    <ThemeProvider>
       <Layout>
         <Component {...pageProps} />
       </Layout>
@@ -24,6 +25,6 @@ export default function MyApp({
           {breakpointDebug}
         </div>
       )}
-    </>
+    </ThemeProvider>
   );
 }

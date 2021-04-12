@@ -95,7 +95,7 @@ function MenuToggle({
   return (
     <button
       className={classNames(
-        'px-4 py-3 text-gray-900 text-xl active:bg-primary-100 hover:bg-primary-50 focus:bg-primary-50 bg-transparent border border-solid border-transparent',
+        'focus-primary px-4 py-3 text-gray-900 text-xl active:bg-primary-100 hover:bg-primary-50 bg-transparent border border-solid border-transparent',
         className
       )}
       type="button"

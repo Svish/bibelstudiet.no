@@ -21,7 +21,13 @@ export default function Heading({
   ...props
 }: Props): ReactElement {
   return (
-    <H className={classNames('mb-6', classes[variant], className)}>
+    <H
+      className={classNames(
+        'mb-6 text-opacity-30',
+        classes[variant],
+        className
+      )}
+    >
       {'children' in props ? (
         props.children
       ) : (
