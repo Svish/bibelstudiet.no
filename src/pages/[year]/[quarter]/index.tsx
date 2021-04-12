@@ -16,6 +16,7 @@ import Xml from 'components/Xml';
 import Image from 'next/image';
 import CardLink from 'components/CardLink';
 import DownloadButton from 'components/DownloadButton';
+import Prose from 'components/Prose';
 
 interface Params extends ParsedUrlQuery {
   year: string;
@@ -87,15 +88,18 @@ export default function QuarterPage(props: Props): ReactElement {
               ))}
             </div>
           </section>
-          <section className="flex flex-col gap-12 lg:grid lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+          <section className="flex flex-col gap-4 lg:grid lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
             <div className="lg:col-span-2">
               <Heading variant="h2">
                 <div className="text-gray-500 text-xl">Forord</div>
                 <div className="text-3xl">{forword.title}</div>
               </Heading>
-              <Xml className="mt-4">{forword.xml}</Xml>
+              <Prose className="mt-4">
+                <Xml map="forword">{forword.xml}</Xml>
+                <p className="small">{forword.about}</p>
+              </Prose>
             </div>
-            <div className="flex flex-col gap-8 justify-end md:grid md:grid-cols-2 lg:flex lg:flex-col-reverse lg:gap-4 lg:mt-20 xl:grid xl:gap-8 xl:col-span-2">
+            <div className="flex flex-col gap-12 justify-end md:grid md:grid-cols-2 lg:flex lg:flex-col-reverse lg:gap-4 lg:mt-20 xl:grid xl:gap-8 xl:col-span-2">
               <div>
                 <dl className="prose prose-sm lg:prose">
                   <dt>Original&shy;tittel</dt>

@@ -1,20 +1,32 @@
 import type { ReactElement } from 'react';
 
 import { useMemo } from 'react';
-import map from 'components/xml/components';
 
-import XmlToReact from 'util/XmlToReact';
-import Prose from './Prose';
+import XmlToReact, { Components } from 'util/XmlToReact';
 
-const parser = new XmlToReact(map);
+import Skip from './xml/Skip';
+import Ref from './xml/Ref';
 
-interface Props {
-  className?: string;
-  children: string;
+interface Map {
+  forword: Components;
+  memory: Components;
 }
 
-export default function Xml({ children, className }: Props): ReactElement {
-  const parsed = useMemo(() => parser.parse(children), [children]);
+const components: Map = {
+  forword: { forword: Skip, r: Ref },
+  memory: { memory: Skip, r: Ref },
+} as const;
 
-  return <Prose className={className}>{parsed}</Prose>;
+interface Props {
+  children: string;
+  map: keyof Map;
+}
+
+export default function Xml({ children, map }: Props): ReactElement {
+  const parsed = useMemo(() => {
+    const parser = new XmlToReact(components[map]);
+    return parser.parse(children);
+  }, [children, map]);
+
+  return <>{parsed}</>;
 }

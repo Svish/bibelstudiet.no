@@ -8,14 +8,5 @@ module.exports = {
   theme: {
     screens: require('./tailwind.screens.js'),
     colors: require('./tailwind.colors.js'),
-    extend: {
-      maxWidth: {
-        prose: '65ch',
-      },
-    },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [require('@tailwindcss/typography')],
 };

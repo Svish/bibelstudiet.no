@@ -4,9 +4,6 @@ interface Props {
   children?: ReactNode;
 }
 
-/**
- * <forword>
- */
-export default function Forword({ children }: Props): ReactElement {
+export default function Skip({ children }: Props): ReactElement {
   return <>{children}</>;
 }

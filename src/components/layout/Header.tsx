@@ -1,16 +1,16 @@
 import type { ReactElement, ReactNode, MouseEventHandler } from 'react';
 
+import classNames from 'classnames';
 import { useCallback, useRef } from 'react';
 import {
   useToggle,
   useClickAway,
   useIsomorphicLayoutEffect as useLayoutEffect,
 } from 'react-use';
-import classNames from 'classnames';
 import { useBreakpoint } from 'util/breakpoints';
 
 import Link from 'components/Link';
-import { MenuIcon, XIcon as CloseIcon } from '@heroicons/react/solid';
+import MenuToggleButton from 'components/layout/MenuToggleButton';
 
 export default function Header(): ReactElement {
   const [isOpen, toggleOpen] = useToggle(false);
@@ -51,7 +51,7 @@ export default function Header(): ReactElement {
           >
             Bibel<span className="text-primary-600">studiet</span>
           </Link>
-          <MenuToggle
+          <MenuToggleButton
             className="block md:hidden"
             open={isOpen}
             onToggle={handleMenuClick}
@@ -78,31 +78,5 @@ function MenuLink({ children, href }: MenuLinkProps): ReactElement {
     >
       {children}
     </Link>
-  );
-}
-
-interface MenuToggleProps {
-  open: boolean;
-  className?: string;
-  onToggle: () => void;
-}
-function MenuToggle({
-  open,
-  className,
-  onToggle,
-}: MenuToggleProps): ReactElement {
-  const Icon = open ? CloseIcon : MenuIcon;
-  return (
-    <button
-      className={classNames(
-        'focus-primary px-4 py-3 text-gray-900 text-xl active:bg-primary-100 hover:bg-primary-50 bg-transparent border border-solid border-transparent',
-        className
-      )}
-      type="button"
-      aria-label={open ? 'Lukk meny' : 'Åpne meny'}
-      onClick={onToggle}
-    >
-      <Icon className="w-6 h-6 fill-current" />
-    </button>
   );
 }

@@ -11,9 +11,5 @@ export default function Prose({
   children,
   className,
 }: ProseProps): ReactElement {
-  return (
-    <div className={classNames('prose prose-secondary md:prose-lg', className)}>
-      {children}
-    </div>
-  );
+  return <div className={classNames('prose', className)}>{children}</div>;
 }

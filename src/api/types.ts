@@ -19,11 +19,13 @@ export interface Year {
   quarters: Pick<Quarter, 'type' | 'id' | 'title' | 'image'>[];
 }
 
+export type Xml = string;
+
 export interface Quarter {
   type: 'quarter';
   id: [year: string, quarter: string];
   title: string;
-  forword: { title: string; xml: string };
+  forword: { title: string; about: string; xml: Xml };
   image?: Image;
   pdf: Pdf;
   meta: {
@@ -41,29 +43,31 @@ export interface Week {
   title: string;
   date: string;
   sabbath: string;
+  memory: Xml;
+  background: Xml;
   days: Pick<Day, 'id' | 'type'>[];
 }
 
 export type Day = {
   id: [year: string, quarter: string, week: string, day: string];
-  pageNumber: string;
+  pageNumber: number;
   audio?: Audio;
 } & (
   | {
       type: 'introduction';
-      introduction: { xml: string };
+      introduction: { xml: Xml };
     }
   | {
       type: 'study';
       title: string;
       date: string;
-      study: { title: string; xml: string };
+      study: { title: string; xml: Xml };
     }
   | {
       type: 'story';
       title: string;
       date: string;
-      story: { title: string; xml: string };
+      story: { title: string; about: string; xml: Xml };
     }
 );
 
