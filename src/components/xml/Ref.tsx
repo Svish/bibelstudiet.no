@@ -16,7 +16,7 @@ interface ImplicitRef {}
  * <r ref="bar">foo</r> => bar
  */
 interface ExplicitRef {
-  ref: string;
+  xref: string;
 }
 
 /**
@@ -38,8 +38,8 @@ export default function Ref({ children, type, ...props }: Props): ReactElement {
   }
 
   const ref =
-    'ref' in props
-      ? props.ref
+    'xref' in props
+      ? props.xref
       : 'pref' in props
       ? props.pref + children
       : children;
@@ -50,5 +50,9 @@ export default function Ref({ children, type, ...props }: Props): ReactElement {
       ? `https://bibel.no/nettbibelen?parse=${query}`
       : `http://text.egwwritings.org/search.php?lang=en&amp;collection=2&amp;section=all&amp;QUERY=${query}`;
 
-  return <Link href={href}>{children}</Link>;
+  return (
+    <Link className="whitespace-nowrap" href={href}>
+      {children}
+    </Link>
+  );
 }

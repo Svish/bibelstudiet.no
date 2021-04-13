@@ -1,4 +1,4 @@
-import type { ReactNode, ReactElement } from 'react';
+import { ReactNode, ReactElement, Fragment } from 'react';
 import type { Null } from './null';
 
 import { isDev } from 'env';
@@ -23,9 +23,14 @@ export default class XmlToReact {
     });
   }
 
-  public parse(xml: string): ReactNode {
+  public parse(xml: string): ReactElement {
     const document = this.parser.parseFromString(xml, 'text/xml');
-    return this.visitNode(document.documentElement);
+
+    return createElement(
+      Fragment,
+      null,
+      this.visitNode(document.documentElement)
+    );
   }
 
   private visitNode(node: Node | Element, index?: number): ReactNode {
@@ -40,12 +45,22 @@ export default class XmlToReact {
 
       // Node.ELEMENT_NODE
       case 1: {
+        if (node === node.ownerDocument?.documentElement) {
+          return createElement(Fragment, { children: this.getChildren(node) });
+        }
+
         const props = { ...this.getProps(node), key: index };
+
         if (node.nodeName in this.components) {
           const Component = this.components[node.nodeName];
           return createElement(Component, props);
-        } else {
-          return createElement(node.nodeName, props);
+        }
+
+        switch (node.nodeName) {
+          case 'br':
+            return createElement(node.nodeName);
+          default:
+            return createElement(node.nodeName, props);
         }
       }
 
@@ -56,15 +71,18 @@ export default class XmlToReact {
     }
   }
 
+  private getChildren(node: Node | Element | Null): ReactNode {
+    return node == null
+      ? undefined
+      : node.childNodes.length === 1
+      ? this.visitNode(node.childNodes[0])
+      : Array.from(node.childNodes).map(this.visitNode.bind(this));
+  }
+
   private getProps(node: Node | Element | Null): Record<string, unknown> {
     return {
       ...this.getAttributes(node),
-      children:
-        node == null
-          ? undefined
-          : node.childNodes.length === 1
-          ? this.visitNode(node.childNodes[0])
-          : Array.from(node.childNodes).map(this.visitNode.bind(this)),
+      children: this.getChildren(node),
     };
   }
 
@@ -73,12 +91,16 @@ export default class XmlToReact {
 
     const obj: Record<string, unknown> = {};
     Array.from(node.attributes).forEach(({ name, value }) => {
+      // Rename attribute names colliding with React
       switch (name) {
         case 'class':
           obj.className = value;
           break;
         case 'for':
           obj.htmlFor = value;
+          break;
+        case 'ref':
+          obj.xref = value;
           break;
         default:
           obj[name] = value;

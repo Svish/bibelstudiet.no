@@ -88,20 +88,20 @@ export default function QuarterPage(props: Props): ReactElement {
               ))}
             </div>
           </section>
-          <section className="flex flex-col gap-4 lg:grid lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-            <div className="lg:col-span-2">
+          <section className="flex flex-col gap-8 md:gap-12 lg:grid lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+            <article className="lg:col-span-2">
               <Heading variant="h2">
-                <div className="text-gray-500 text-xl">Forord</div>
+                <div className="text-xl text-gray-500">Forord</div>
                 <div className="text-3xl">{forword.title}</div>
               </Heading>
               <Prose className="mt-4">
-                <Xml map="forword">{forword.xml}</Xml>
+                <Xml>{forword.xml}</Xml>
                 <p className="small">{forword.about}</p>
               </Prose>
-            </div>
-            <div className="flex flex-col gap-12 justify-end md:grid md:grid-cols-2 lg:flex lg:flex-col-reverse lg:gap-4 lg:mt-20 xl:grid xl:gap-8 xl:col-span-2">
+            </article>
+            <div className="flex flex-col justify-end gap-12 md:grid md:grid-cols-2 lg:flex lg:flex-col-reverse lg:gap-4 lg:mt-20 xl:grid xl:gap-8 xl:col-span-2">
               <div>
-                <dl className="prose prose-sm lg:prose">
+                <dl className="prose-sm prose lg:prose">
                   <dt>Original&shy;tittel</dt>
                   <dd>{meta.title}</dd>
                   <dt>Studie&shy;forfatter</dt>
@@ -124,7 +124,7 @@ export default function QuarterPage(props: Props): ReactElement {
                   <Image
                     alt=""
                     layout="responsive"
-                    className="rounded-lg shadow-xl object-cover object-center"
+                    className="object-cover object-center rounded-lg shadow-xl"
                     sizes={getSizes(50, 33, 25)}
                     src={image.src}
                     width={image.width}
@@ -159,7 +159,7 @@ export function WeekCard(props: {
       aria-label={`${name} – ${title}`}
     >
       <div className="flex items-baseline justify-between">
-        <div className="whitespace-nowrap text-xl leading-none">{name}</div>
+        <div className="text-xl leading-none whitespace-nowrap">{name}</div>
         <div className="text-base">
           {formatDate(sabbath, { day: 'numeric' })}{' '}
           <span className="text-secondary-600">
@@ -167,7 +167,7 @@ export function WeekCard(props: {
           </span>
         </div>
       </div>
-      <div className="text-gray-500 text-sm truncate">{title}</div>
+      <div className="text-sm text-gray-500 truncate">{title}</div>
     </CardLink>
   );
 }

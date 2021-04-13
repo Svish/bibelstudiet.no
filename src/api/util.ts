@@ -4,12 +4,12 @@ import type { Breadcrumb } from 'components/layout/Breadcrumbs';
 /**
  * Get URL for a subject.
  */
-export function getUrl(subject: UrlSubject | UrlSubject['id']): string {
+export function getUrl(subject: UrlSubject): string {
   if (!Array.isArray(subject)) subject = subject.id;
   return '/' + subject.join('/');
 }
 
-export type UrlSubject = Pick<Subject, 'id'>;
+export type UrlSubject = string[] | { id: string[] };
 
 /**
  * Get name for a subject.

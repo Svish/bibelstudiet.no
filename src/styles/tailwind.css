@@ -44,7 +44,7 @@
 
 @layer base {
   body {
-    @apply text-gray-900 antialiased bg-gray-50;
+    @apply antialiased text-gray-900 bg-gray-50;
     @apply overflow-y-scroll;
   }
 }
@@ -85,42 +85,9 @@
    * Prose
    *
    * @see https://github.com/tailwindlabs/tailwindcss-typography/issues/146 (no dl)
-   * @see https://github.com/tailwindlabs/tailwindcss-typography/issues/143 (not working with color functions)
    */
-  .prose {
-    @apply text-base md:text-lg;
-  }
-
-  .prose p,
-  .prose ol,
-  .prose ul,
-  .prose blockquote,
-  .prose dl {
-    margin-top: 1.25em;
-    margin-bottom: 1.25em;
-  }
-
   .prose p.small {
-    @apply text-sm md:text-base text-gray-500;
-  }
-
-  .prose a {
-    @apply text-secondary-700;
-    text-decoration: underline;
-    text-decoration-color: rgb(var(--color-secondary-300));
-    text-decoration-thickness: 0.1em;
-    text-underline-offset: 0.155em;
-  }
-
-  .prose b,
-  .prose strong {
-    @apply font-semibold text-black;
-  }
-
-  .prose i,
-  .prose cite,
-  .prose em {
-    @apply italic;
+    @apply text-sm text-gray-500 md:text-base;
   }
 
   .prose dt {

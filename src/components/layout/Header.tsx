@@ -12,6 +12,9 @@ import { useBreakpoint } from 'util/breakpoints';
 import Link from 'components/Link';
 import MenuToggleButton from 'components/layout/MenuToggleButton';
 
+// TODO: Options menu (or just show on front page?)
+// TODO: Today button/link
+
 export default function Header(): ReactElement {
   const [isOpen, toggleOpen] = useToggle(false);
 
@@ -42,11 +45,11 @@ export default function Header(): ReactElement {
     >
       <nav
         aria-label="Navigasjon"
-        className="container mx-auto px-4 md:flex md:justify-between"
+        className="container px-4 mx-auto md:flex md:justify-between"
       >
         <div className="flex justify-between w-full md:w-auto">
           <Link
-            className="focus-primary px-4 py-3 h-full text-lg active:bg-primary-100 hover:bg-primary-50 focus:bg-primary-50 md:py-4 md:text-xl"
+            className="h-full px-4 py-3 text-lg focus-primary active:bg-primary-100 hover:bg-primary-50 focus:bg-primary-50 md:py-4 md:text-xl"
             href="/"
           >
             Bibel<span className="text-primary-600">studiet</span>
@@ -73,7 +76,7 @@ interface MenuLinkProps {
 function MenuLink({ children, href }: MenuLinkProps): ReactElement {
   return (
     <Link
-      className="focus-primary block px-4 py-3 text-gray-900 active:bg-primary-100 hover:bg-primary-50 focus:bg-primary-50 md:pb-2 md:pt-6"
+      className="block px-4 py-3 text-gray-900 focus-primary active:bg-primary-100 hover:bg-primary-50 focus:bg-primary-50 md:pb-2 md:pt-6"
       href={href}
     >
       {children}

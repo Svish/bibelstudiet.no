@@ -1,13 +1,4 @@
-export type Subject = Year | Quarter | Week | Day;
-
-export const isYear = (subject: Pick<Subject, 'id'>): subject is Year =>
-  'id' in subject && subject.id.length === 1;
-export const isQuarter = (subject: Pick<Subject, 'id'>): subject is Quarter =>
-  'id' in subject && subject.id.length === 2;
-export const isWeek = (subject: Pick<Subject, 'id'>): subject is Week =>
-  'id' in subject && subject.id.length === 3;
-export const isDay = (subject: Pick<Subject, 'id'>): subject is Day =>
-  'id' in subject && subject.id.length === 4;
+export type Subject = Year | Quarter | Week | Introduction | Study | Story;
 
 export interface Root {
   years: Pick<Year, 'type' | 'id'>[];
@@ -45,31 +36,49 @@ export interface Week {
   sabbath: string;
   memory: Xml;
   background: Xml;
-  days: Pick<Day, 'id' | 'type'>[];
+  days: [
+    introduction: Pick<Introduction, 'id' | 'type'>,
+    sunday: Pick<Study, 'id' | 'type' | 'title' | 'date'>,
+    monday: Pick<Study, 'id' | 'type' | 'title' | 'date'>,
+    tuesday: Pick<Study, 'id' | 'type' | 'title' | 'date'>,
+    wednesday: Pick<Study, 'id' | 'type' | 'title' | 'date'>,
+    thursday: Pick<Study, 'id' | 'type' | 'title' | 'date'>,
+    friday: Pick<Study, 'id' | 'type' | 'title' | 'date'>,
+    story: Pick<Story, 'id' | 'type' | 'title' | 'date'>
+  ];
 }
 
-export type Day = {
-  id: [year: string, quarter: string, week: string, day: string];
+export interface Day {
   pageNumber: number;
   audio?: Audio;
-} & (
-  | {
-      type: 'introduction';
-      introduction: { xml: Xml };
-    }
-  | {
-      type: 'study';
-      title: string;
-      date: string;
-      study: { title: string; xml: Xml };
-    }
-  | {
-      type: 'story';
-      title: string;
-      date: string;
-      story: { title: string; about: string; xml: Xml };
-    }
-);
+}
+
+export interface Introduction extends Day {
+  id: [year: string, quarter: string, week: string, day: '0'];
+  type: 'introduction';
+  introduction: { xml: Xml };
+}
+
+export interface Study extends Day {
+  id: [
+    year: string,
+    quarter: string,
+    week: string,
+    day: '1' | '2' | '3' | '4' | '5' | '6'
+  ];
+  type: 'study';
+  title: string;
+  date: string;
+  study: { title: string; xml: Xml };
+}
+
+export interface Story extends Day {
+  id: [year: string, quarter: string, week: string, day: '7'];
+  type: 'story';
+  title: string;
+  date: string;
+  story: { title: string; about: string; xml: Xml };
+}
 
 export interface Pdf {
   href: string;
