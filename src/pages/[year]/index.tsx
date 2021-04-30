@@ -47,7 +47,7 @@ export default function YearPage(props: Props): ReactElement {
     <Page>
       <Title title={year} />
       <Breadcrumbs subject={props.year} />
-      <Heading variant="h1">{year}</Heading>
+      <Heading variant="h1" title={year} />
       <div className="grid gap-4 -mx-4 lg:grid-cols-2 xl:grid-cols-4">
         {quarters.map((quarter) => (
           <QuarterCard key={quarter.id[1]} quarter={quarter} />
@@ -74,10 +74,10 @@ export function QuarterCard(props: {
       aria-label={`${name} ${year} – ${title}`}
     >
       <div className="">
-        <div className="whitespace-nowrap text-xl md:text-2xl xl:text-xl">
+        <div className="text-xl whitespace-nowrap md:text-2xl xl:text-xl">
           {name} <span className="text-secondary-500">{year}</span>
         </div>
-        <div className="text-gray-500 text-sm md:text-lg lg:text-base xl:text-sm">
+        <div className="text-sm text-gray-500 md:text-lg lg:text-base xl:text-sm">
           {title}
         </div>
       </div>
@@ -86,7 +86,7 @@ export function QuarterCard(props: {
           <Image
             alt=""
             layout="intrinsic"
-            className="rounded shadow-md object-cover object-center"
+            className="object-cover object-center rounded shadow-md"
             src={image.src}
             width={90}
             height={128}

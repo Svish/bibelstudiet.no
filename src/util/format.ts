@@ -35,7 +35,10 @@ export function formatDate(
     };
   }
 
-  return date.toLocaleDateString(LOCALE, format).replace(/ /g, ' ');
+  return date
+    .toLocaleDateString(LOCALE, format)
+    .replace(/ /g, ' ')
+    .replace('lørdag', 'sabbaten');
 }
 
 /**

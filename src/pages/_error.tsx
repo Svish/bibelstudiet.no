@@ -19,9 +19,7 @@ export default function ErrorPage({ statusCode }: Props): ReactElement {
 
   return (
     <Page>
-      <Heading variant="h1" className="centered">
-        {statusCode}
-      </Heading>
+      <Heading variant="h1" className="centered" title={statusCode} />
       <p>{message}</p>
     </Page>
   );

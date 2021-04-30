@@ -10,6 +10,7 @@ import {
   Study,
   Story,
 } from 'api/endpoints';
+import { formatDate } from 'util/format';
 
 import Page from 'components/layout/Page';
 import Title from 'components/Title';
@@ -90,15 +91,24 @@ export default function WeekPage(props: Props): ReactElement {
     <Page>
       <Title title={[`Studium ${week}`, `${quarter}. Kvartal`, year]} />
       <Breadcrumbs subject={props.week} />
-      <Heading variant="h1" title={`Studium ${week}`} subtitle={title} />
+      <Heading
+        variant="h1"
+        title={`Studium ${week}`}
+        subtitle={title}
+        right={`${formatDate(sabbath, {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+        })}`}
+      />
       <Level>
-        <div className="space-y-8">
+        <div className="space-y-16">
           {days.map((day) => {
             switch (day.type) {
               case 'introduction':
                 return (
-                  <article>
-                    <Heading variant="sr-only">Introduksjon</Heading>
+                  <article key={day.id[3]}>
+                    <Heading variant="sr-only" title="Introduksjon" />
                     <Prose>
                       <blockquote>
                         <Xml>{memory}</Xml>
@@ -111,7 +121,15 @@ export default function WeekPage(props: Props): ReactElement {
               case 'study':
                 return (
                   <article key={day.id[3]}>
-                    <Heading variant="h2" title={day.study.title} />
+                    <Heading
+                      variant="h2"
+                      title={day.study.title}
+                      right={formatDate(day.date, {
+                        weekday: 'long',
+                        day: 'numeric',
+                        month: 'long',
+                      })}
+                    />
                     <Prose>
                       <Xml>{day.study.xml}</Xml>
                     </Prose>
@@ -120,7 +138,16 @@ export default function WeekPage(props: Props): ReactElement {
               case 'story':
                 return (
                   <article key={day.id[3]}>
-                    <Heading variant="h2">{day.story.title}</Heading>
+                    <Heading
+                      variant="h2"
+                      title={day.story.title}
+                      top="Misjonsfortelling"
+                      right={formatDate(day.date, {
+                        weekday: 'long',
+                        day: 'numeric',
+                        month: 'long',
+                      })}
+                    />
                     <Prose>
                       <Xml>{day.story.xml}</Xml>
                     </Prose>

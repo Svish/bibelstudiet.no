@@ -12,8 +12,8 @@ export default function Home(): ReactElement {
   return (
     <Page>
       <Title title={null} />
-      <Heading variant="h1">Velkommen til bibelstudium</Heading>
-      <p className="bg-red-400 my-8 p-12 text-5xl">
+      <Heading variant="h1" title="Velkommen til bibelstudium" />
+      <p className="p-12 my-8 text-5xl bg-red-400">
         {'// TODO Memory verse and link'}
       </p>
 
@@ -46,7 +46,7 @@ export default function Home(): ReactElement {
 
       <div className="flex justify-center mt-7 max-w-prose">
         <a
-          className="hover:text-blue-600 hover:border-blue-300 flex items-center mx-auto px-7 py-4 no-underline text-xl bg-gray-100 border border-gray-300 shadow-sm space-x-3 md:text-2xl"
+          className="flex items-center py-4 mx-auto space-x-3 text-xl no-underline bg-gray-100 border border-gray-300 shadow-sm hover:text-blue-600 hover:border-blue-300 px-7 md:text-2xl"
           href="https://www.norskbokforlag.no/Produkter/Abonnementer/Bibelstudieabonnement"
           title="Abonnér på Bibelstudiene fra Norsk Bokforlag"
         >

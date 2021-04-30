@@ -56,12 +56,7 @@ export default class XmlToReact {
           return createElement(Component, props);
         }
 
-        switch (node.nodeName) {
-          case 'br':
-            return createElement(node.nodeName);
-          default:
-            return createElement(node.nodeName, props);
-        }
+        return createElement(node.nodeName, props);
       }
 
       default: {
@@ -72,11 +67,16 @@ export default class XmlToReact {
   }
 
   private getChildren(node: Node | Element | Null): ReactNode {
-    return node == null
+    const children =
+      node == null
+        ? undefined
+        : node.childNodes.length === 1
+        ? this.visitNode(node.childNodes[0])
+        : Array.from(node.childNodes).map(this.visitNode.bind(this));
+
+    return Array.isArray(children) && children.length === 0
       ? undefined
-      : node.childNodes.length === 1
-      ? this.visitNode(node.childNodes[0])
-      : Array.from(node.childNodes).map(this.visitNode.bind(this));
+      : children;
   }
 
   private getProps(node: Node | Element | Null): Record<string, unknown> {

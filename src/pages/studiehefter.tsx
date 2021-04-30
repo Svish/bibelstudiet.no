@@ -34,7 +34,7 @@ export default function StudierPage({ years }: Props): ReactElement {
     <Page>
       <Title title="Studiehefter" />
       <Breadcrumbs />
-      <Heading variant="sr-only">Studiehefter</Heading>
+      <Heading variant="sr-only" title="Studiehefter" />
       <div className="space-y-8">
         <Level>
           {years.map((year) => (
@@ -53,8 +53,8 @@ function YearSection(props: { year: Year }): ReactElement {
   } = props.year;
   return (
     <section>
-      <Heading variant="h1">{year}</Heading>
-      <div className="grid gap-4 -mx-4 mt-5 lg:grid-cols-2 xl:grid-cols-4">
+      <Heading variant="h1" title={year} />
+      <div className="grid gap-4 mt-5 -mx-4 lg:grid-cols-2 xl:grid-cols-4">
         {quarters.map((quarter) => (
           <QuarterCard key={quarter.id[1]} quarter={quarter} />
         ))}

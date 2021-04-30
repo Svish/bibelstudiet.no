@@ -12,13 +12,11 @@ export default function OmPage(): ReactElement {
     <Page>
       <Title title="Om …" />
       <Breadcrumbs />
-      <Heading variant="h1" className="sr-only">
-        Om …
-      </Heading>
+      <Heading variant="h1" className="sr-only" title="Om …" />
       <Level>
         <div className="grid gap-8 lg:grid-cols-2">
           <section>
-            <Heading variant="h1">Bibelstudiet.no</Heading>
+            <Heading variant="h1" title="Bibelstudiet.no" />
             <Prose className="mt-4">
               <p>
                 Målet med denne nettsiden er en digital versjon av heftene
@@ -63,7 +61,7 @@ export default function OmPage(): ReactElement {
             </Prose>
           </section>
           <section>
-            <Heading variant="h1">«Bibelstudier»</Heading>
+            <Heading variant="h1" title="«Bibelstudier»" />
             <Level>
               <Prose className="mt-4">
                 <p>

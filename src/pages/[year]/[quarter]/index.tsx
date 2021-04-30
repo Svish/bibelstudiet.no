@@ -68,7 +68,7 @@ export default function QuarterPage(props: Props): ReactElement {
       <div className="flex flex-col gap-16 lg:grid-cols-3 xl:grid-cols-4">
         <Level>
           <section className="md:col-span-2 lg:col-span-1">
-            <Heading variant="sr-only">Innhold</Heading>
+            <Heading variant="sr-only" title="Innhold" />
             <div className="flex flex-col gap-4 -mx-4 md:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {weeks.map((week) => (
                 <WeekCard
@@ -90,10 +90,7 @@ export default function QuarterPage(props: Props): ReactElement {
           </section>
           <section className="flex flex-col gap-8 md:gap-12 lg:grid lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
             <article className="lg:col-span-2">
-              <Heading variant="h2">
-                <div className="text-xl text-gray-500">Forord</div>
-                <div className="text-3xl">{forword.title}</div>
-              </Heading>
+              <Heading variant="h2" top="Forord" title={forword.title} />
               <Prose className="mt-4">
                 <Xml>{forword.xml}</Xml>
                 <p className="small">{forword.about}</p>
