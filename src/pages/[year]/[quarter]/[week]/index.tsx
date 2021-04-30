@@ -101,6 +101,9 @@ export default function WeekPage(props: Props): ReactElement {
           month: 'long',
         })}`}
       />
+      <aside className="px-12 py-6 my-12 text-4xl text-center bg-primary-600 text-primary-50">
+        ... under utvikling ...
+      </aside>
       <Level>
         <div className="space-y-16">
           {days.map((day) => {
