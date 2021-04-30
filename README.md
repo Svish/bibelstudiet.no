@@ -1,3 +1,3 @@
 # Bibelstudiet.no
 
-Source of [bibelstudiet.no](https://bibelstudiet.no) v2.
+This is the source code for the website, [bibelstudiet.no](https://bibelstudiet.no).
