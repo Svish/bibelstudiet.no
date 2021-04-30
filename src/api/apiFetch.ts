@@ -1,4 +1,4 @@
-import { isEmpty } from 'util/string';
+import { isEmpty, trim } from 'util/string';
 import ApiError from './ApiError';
 
 /**
@@ -8,11 +8,12 @@ import ApiError from './ApiError';
  * @throws ApiError
  */
 export default async function apiFetch<R>(path: string): Promise<R> {
-  if (isEmpty(process.env.API)) {
+  const baseUrl = process.env.API;
+  if (isEmpty(baseUrl)) {
     throw new Error('Missing API in .env');
   }
 
-  const url = process.env.API + path;
+  const url = trim(baseUrl, '/') + path;
   const res = await fetch(url);
 
   if (!res.ok) {

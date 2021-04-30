@@ -6,7 +6,7 @@ import { byString } from 'util/sort';
 import { formatDate } from 'util/format';
 import { getIndex, getById, Quarter } from 'api/endpoints';
 import { getSizes } from 'util/breakpoints';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import Page from 'components/layout/Page';
 import Title from 'components/Title';
@@ -151,7 +151,7 @@ export function WeekCard(props: {
 
   return (
     <CardLink
-      className={classNames('px-4 py-3', props.className)}
+      className={clsx('px-4 py-3', props.className)}
       to={props.week}
       aria-label={`${name} – ${title}`}
     >

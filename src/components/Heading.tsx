@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import { H } from 'react-accessible-headings';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 export { H, Level } from 'react-accessible-headings';
 
@@ -29,7 +29,7 @@ export default function Heading({
 }: Props): ReactElement {
   return (
     <H
-      className={classNames(
+      className={clsx(
         'mb-6 text-opacity-30 flex justify-between',
         classes[variant],
         className

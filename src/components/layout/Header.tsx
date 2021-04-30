@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode, MouseEventHandler } from 'react';
 
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { useCallback, useRef } from 'react';
 import {
   useToggle,
@@ -60,7 +60,7 @@ export default function Header(): ReactElement {
             onToggle={handleMenuClick}
           />
         </div>
-        <div className={classNames('md:flex', { hidden: !isOpen })}>
+        <div className={clsx('md:flex', { hidden: !isOpen })}>
           <MenuLink href="/studiehefter">Studiehefter</MenuLink>
           <MenuLink href="/om">Om</MenuLink>
         </div>

@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { MenuIcon, XIcon as CloseIcon } from '@heroicons/react/solid';
 
@@ -17,7 +17,7 @@ export default function MenuToggleButton({
   const Icon = open ? CloseIcon : MenuIcon;
   return (
     <button
-      className={classNames(
+      className={clsx(
         'focus-primary px-4 py-3 text-gray-900 text-xl active:bg-primary-100 hover:bg-primary-50 bg-transparent border border-solid border-transparent',
         className
       )}

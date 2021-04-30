@@ -4,7 +4,7 @@ import type { Pdf, Audio } from 'api/types';
 import { formatSiNumber } from 'util/format';
 
 import { DocumentDownloadIcon as DownloadIcon } from '@heroicons/react/outline';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 interface Props {
   file: Pdf | Audio;
@@ -33,7 +33,7 @@ export default function DownloadButton({
   return (
     <a
       href={href}
-      className={classNames(
+      className={clsx(
         'focus-secondary flex items-center justify-between px-4 py-2 w-52 active:bg-secondary-100 hover:bg-secondary-50 bg-white border border-gray-300 hover:border-secondary-400 focus:border-secondary-400 rounded-lg shadow-sm cursor-pointer',
         className
       )}

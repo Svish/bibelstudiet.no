@@ -1,9 +1,11 @@
-import { ReactNode, ReactElement, Fragment } from 'react';
+import type { ReactNode, ReactElement } from 'react';
 import type { Null } from './null';
 
 import { isDev } from 'env';
 import { createElement } from 'react';
+import { toStyleObject } from './string';
 
+import { Fragment } from 'react';
 import { DOMParser } from 'xmldom';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -95,6 +97,9 @@ export default class XmlToReact {
       switch (name) {
         case 'class':
           obj.className = value;
+          break;
+        case 'style':
+          obj.style = toStyleObject(value);
           break;
         case 'for':
           obj.htmlFor = value;

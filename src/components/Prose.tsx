@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 interface ProseProps {
   children: ReactNode;
@@ -11,5 +11,5 @@ export default function Prose({
   children,
   className,
 }: ProseProps): ReactElement {
-  return <div className={classNames('prose md:prose-lg', className)}>{children}</div>;
+  return <div className={clsx('prose md:prose-lg', className)}>{children}</div>;
 }
