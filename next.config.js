@@ -11,7 +11,7 @@ module.exports = require('next-compose-plugins')(
   {
     redirects: require('./next.redirects.js'),
     images: {
-      domains: ['localhost'],
+      domains: ['localhost', 'api.bibelstudiet.no'],
     },
     future: {
       webpack5: true,
