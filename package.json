@@ -39,6 +39,7 @@
     "react-accessible-headings": "^2.3.0",
     "react-dom": "^17.0.2",
     "react-use": "^17.3.1",
+    "sharp": "^0.29.0",
     "tailwindcss": "^2.2.9",
     "typescript": "^4.4.2",
     "vercel": "^23.1.2",
