@@ -15,7 +15,7 @@ type Props = {
 
 const classes = {
   'h1': 'text-3xl md:text-4xl',
-  'h2': 'text-2xl',
+  'h2': 'text-2xl md:text-3xl',
   'sr-only': 'sr-only',
 } as const;
 
