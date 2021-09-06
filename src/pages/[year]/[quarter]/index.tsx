@@ -122,7 +122,7 @@ export default function QuarterPage(props: Props): ReactElement {
                     alt=""
                     layout="responsive"
                     className="object-cover object-center rounded-lg shadow-xl"
-                    sizes={getSizes(50, 33, 25)}
+                    sizes={getSizes(100, 50, 33, 25)}
                     src={image.src}
                     width={image.width}
                     height={image.height}
