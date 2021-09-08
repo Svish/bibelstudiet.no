@@ -53,6 +53,8 @@
   /**
    * Default focus rings
    */
+  main a,
+  button,
   [type='text'],
   [type='email'],
   [type='url'],
@@ -66,10 +68,8 @@
   [type='time'],
   [type='week'],
   [multiple],
-  main a,
   textarea,
-  select,
-  button {
+  select {
     @apply focus-secondary;
   }
 
