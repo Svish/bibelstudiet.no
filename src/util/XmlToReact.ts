@@ -1,4 +1,4 @@
-import type { ReactNode, ReactElement } from 'react';
+import { ReactNode, ReactElement } from 'react';
 import type { Null } from './null';
 
 import { isDev } from 'env';
@@ -8,10 +8,7 @@ import { toStyleObject } from './string';
 import { Fragment } from 'react';
 import { DOMParser } from 'xmldom';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type Component = <P extends {}>(props: P) => ReactElement | null;
-
-export type Components = Record<string, Component>;
+export type Components = Record<string, unknown>;
 
 export default class XmlToReact {
   private readonly parser: DOMParser;
@@ -55,7 +52,10 @@ export default class XmlToReact {
 
         if (node.nodeName in this.components) {
           const Component = this.components[node.nodeName];
-          return createElement(Component, props);
+          return createElement(
+            Component as Parameters<typeof createElement>[0],
+            props
+          );
         }
 
         return createElement(node.nodeName, props);
@@ -93,7 +93,7 @@ export default class XmlToReact {
 
     const obj: Record<string, unknown> = {};
     Array.from(node.attributes).forEach(({ name, value }) => {
-      // Rename attribute names colliding with React
+      // Adjust attribute names colliding with React
       switch (name) {
         case 'class':
           obj.className = value;

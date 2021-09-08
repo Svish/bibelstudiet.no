@@ -19,6 +19,7 @@ export default function Link({
 
   if (/^(?:https?|mailto)?:/.test(href)) {
     props.rel = 'external nofollow noreferrer noopener';
+    props.target = '_blank';
   }
 
   return (

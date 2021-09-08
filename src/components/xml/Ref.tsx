@@ -43,12 +43,15 @@ export default function Ref({ children, type, ...props }: Props): ReactElement {
       : 'pref' in props
       ? props.pref + children
       : children;
-  const query = encodeURIComponent(ref.replace(/\s+/g, ' '));
+  const query = encodeURIComponent(ref.replace(/\s+/g, ' ')).replace(
+    /%20/g,
+    '+'
+  );
 
   const href =
     type !== 'egw'
       ? `https://bibel.no/nettbibelen?parse=${query}`
-      : `http://text.egwwritings.org/search.php?lang=en&amp;collection=2&amp;section=all&amp;QUERY=${query}`;
+      : `http://text.egwwritings.org/search.php?lang=en&collection=2&section=all&QUERY=${query}`;
 
   return (
     <Link className="whitespace-nowrap" href={href}>

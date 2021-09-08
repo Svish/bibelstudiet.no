@@ -6,6 +6,7 @@ import XmlToReact from 'util/XmlToReact';
 
 import Ref from './xml/Ref';
 import List from './xml/List';
+import Link from './Link';
 
 // TODO: Deal with exercises (ex, x, nested ex)
 //  - Use Context? If context not undefined => child ex?
@@ -15,6 +16,7 @@ import List from './xml/List';
 const parser = new XmlToReact({
   r: Ref,
   questions: List,
+  a: Link,
 });
 
 interface Props {
