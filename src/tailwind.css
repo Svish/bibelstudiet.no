@@ -1,41 +1,44 @@
 :root {
   --color-transparent: transparent;
   --color-current: currentColor;
-  --color-white: 255, 255, 255;
-  --color-black: 0, 0, 0;
+  --color-white: 255 255 255;
+  --color-black: 0 0 0;
+
   /* Tailwind: Gray */
-  --color-gray-50: 250, 250, 250;
-  --color-gray-100: 244, 244, 245;
-  --color-gray-200: 228, 228, 231;
-  --color-gray-300: 212, 212, 216;
-  --color-gray-400: 161, 161, 170;
-  --color-gray-500: 113, 113, 122;
-  --color-gray-600: 82, 82, 91;
-  --color-gray-700: 63, 63, 70;
-  --color-gray-800: 39, 39, 42;
-  --color-gray-900: 24, 24, 27;
+  --color-gray-50: 250 250 250;
+  --color-gray-100: 244 244 245;
+  --color-gray-200: 228 228 231;
+  --color-gray-300: 212 212 216;
+  --color-gray-400: 161 161 170;
+  --color-gray-500: 113 113 122;
+  --color-gray-600: 82 82 91;
+  --color-gray-700: 63 63 70;
+  --color-gray-800: 39 39 42;
+  --color-gray-900: 24 24 27;
+
   /* Tailwind: Violet */
-  --color-primary-50: 245, 243, 255;
-  --color-primary-100: 237, 233, 254;
-  --color-primary-200: 221, 214, 254;
-  --color-primary-300: 196, 181, 253;
-  --color-primary-400: 167, 139, 250;
-  --color-primary-500: 139, 92, 246;
-  --color-primary-600: 124, 58, 237;
-  --color-primary-700: 109, 40, 217;
-  --color-primary-800: 91, 33, 182;
-  --color-primary-900: 76, 29, 149;
+  --color-primary-50: 245 243 255;
+  --color-primary-100: 237 233 254;
+  --color-primary-200: 221 214 254;
+  --color-primary-300: 196 181 253;
+  --color-primary-400: 167 139 250;
+  --color-primary-500: 139 92 246;
+  --color-primary-600: 124 58 237;
+  --color-primary-700: 109 40 217;
+  --color-primary-800: 91 33 182;
+  --color-primary-900: 76 29 149;
+
   /* Tailwind: Indigo */
-  --color-secondary-50: 238, 242, 255;
-  --color-secondary-100: 224, 231, 255;
-  --color-secondary-200: 199, 210, 254;
-  --color-secondary-300: 165, 180, 252;
-  --color-secondary-400: 129, 140, 248;
-  --color-secondary-500: 99, 102, 241;
-  --color-secondary-600: 79, 70, 229;
-  --color-secondary-700: 67, 56, 202;
-  --color-secondary-800: 55, 48, 163;
-  --color-secondary-900: 49, 46, 129;
+  --color-secondary-50: 238 242 255;
+  --color-secondary-100: 224 231 255;
+  --color-secondary-200: 199 210 254;
+  --color-secondary-300: 165 180 252;
+  --color-secondary-400: 129 140 248;
+  --color-secondary-500: 99 102 241;
+  --color-secondary-600: 79 70 229;
+  --color-secondary-700: 67 56 202;
+  --color-secondary-800: 55 48 163;
+  --color-secondary-900: 49 46 129;
 }
 
 @tailwind base;

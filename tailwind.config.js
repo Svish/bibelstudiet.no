@@ -1,10 +1,9 @@
 /**
- * @type {import("@types/tailwindcss/tailwind-config").TailwindConfig }
+ * @type {import('tailwindcss').Config }
+ *
  **/
 module.exports = {
-  mode: 'jit',
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false,
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: require('./tailwind.screens.js'),
     colors: require('./tailwind.colors.js'),
