@@ -14,6 +14,15 @@ export default function Home(): ReactElement {
       <aside className="px-12 py-6 my-12 text-4xl text-center bg-primary-600 text-primary-50">
         ... under utvikling ...
       </aside>
+      <aside className="px-12 py-6 my-12 text-4xl text-center bg-primary-600/75 text-primary-50">
+        ... under utvikling ...
+      </aside>
+      <aside className="px-12 py-6 my-12 text-4xl text-center bg-primary-600/50 text-primary-50">
+        ... under utvikling ...
+      </aside>
+      <aside className="px-12 py-6 my-12 text-4xl text-center bg-primary-600/25 text-primary-50">
+        ... under utvikling ...
+      </aside>
     </Page>
   );
 }

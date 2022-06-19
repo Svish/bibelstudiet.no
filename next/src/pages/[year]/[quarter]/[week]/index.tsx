@@ -18,6 +18,7 @@ import Breadcrumbs from 'components/layout/Breadcrumbs';
 import Heading, { H, Level } from 'components/Heading';
 import Prose from 'components/Prose';
 import Xml from 'components/Xml';
+import Ref from 'components/xml/Ref';
 
 interface Params extends ParsedUrlQuery {
   year: string;
@@ -101,23 +102,28 @@ export default function WeekPage(props: Props): ReactElement {
           month: 'long',
         })}`}
       />
-      <aside className="px-12 py-6 my-12 text-4xl text-center bg-primary-600 text-primary-50">
-        ... under utvikling ...
-      </aside>
       <Level>
         <div className="space-y-16">
+          <Prose>
+            <blockquote>
+              <Xml>{memory}</Xml>
+            </blockquote>
+            <ul>
+              {background.map((ref, i) => (
+                <li key={i}>
+                  <Ref>{ref}</Ref>
+                </li>
+              ))}
+            </ul>
+          </Prose>
           {days.map((day) => {
             switch (day.type) {
               case 'introduction':
                 return (
                   <article key={day.id[3]}>
-                    <Heading variant="sr-only" title="Introduksjon" />
+                    <Heading variant="h2" title="Introduksjon" />
                     <Prose>
-                      <blockquote>
-                        <Xml>{memory}</Xml>
-                      </blockquote>
                       <Xml>{day.introduction.xml}</Xml>
-                      <Xml>{background}</Xml>
                     </Prose>
                   </article>
                 );
@@ -145,6 +151,7 @@ export default function WeekPage(props: Props): ReactElement {
                       variant="h2"
                       title={day.story.title}
                       top="Misjonsfortelling"
+                      subtitle={day.story.about}
                       right={formatDate(day.date, {
                         weekday: 'long',
                         day: 'numeric',

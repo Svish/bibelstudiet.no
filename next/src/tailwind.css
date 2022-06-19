@@ -54,8 +54,16 @@
 
 @layer components {
   /**
-   * Default focus rings
+   * Focus rings
    */
+  .focus-primary {
+    @apply focus:outline-none focus:ring-primary-500 focus:ring-offset-2 focus:ring-2;
+  }
+
+  .focus-secondary {
+    @apply focus:outline-none focus:ring-secondary-500 focus:ring-offset-2 focus:ring-2;
+  }
+
   main a,
   button,
   [type='text'],
@@ -76,42 +84,51 @@
     @apply focus-secondary;
   }
 
-  .focus-primary {
-    @apply focus:outline-none focus:ring-primary-500 focus:ring-offset-2 focus:ring-2;
-  }
-
-  .focus-secondary {
-    @apply focus:outline-none focus:ring-secondary-500 focus:ring-offset-2 focus:ring-2;
-  }
-
   /**
-   * Prose
-   *
-   * @see https://github.com/tailwindlabs/tailwindcss-typography/issues/146 (no dl)
+   * Prose additions
    */
-  .prose p.small {
-    @apply text-sm text-gray-500 md:text-base;
-  }
+  .prose {
+    /* `box` from XML files */
+    .box {
+      @apply px-8 py-3 -mx-8 bg-white border border-gray-300 shadow-sm md:rounded-lg;
 
-  .prose dt {
-    @apply font-semibold;
-  }
+      :first-child {
+        @apply mt-0;
+      }
 
-  .prose dd {
-    @apply relative;
-    padding-left: 1.75em;
-  }
+      :last-child {
+        @apply mb-0;
+      }
+    }
 
-  .prose dd + dt {
-    margin-top: 0.75em;
-  }
+    /* `small` from XML files */
+    p.small {
+      @apply text-sm text-gray-500 md:text-base;
+    }
 
-  .prose dd::before {
-    content: '';
-    @apply absolute bg-gray-300 rounded-full;
-    width: 0.375em;
-    height: 0.375em;
-    top: calc(0.875em - 0.1875em);
-    left: 0.25em;
+    /* @see https://github.com/tailwindlabs/tailwindcss-typography/issues/146 (no dl) */
+    dl {
+      dt {
+        @apply font-semibold;
+      }
+
+      dd {
+        @apply relative;
+        padding-left: 1.75em;
+      }
+
+      dd + dt {
+        margin-top: 0.75em;
+      }
+
+      dd::before {
+        content: '';
+        @apply absolute bg-gray-300 rounded-full;
+        width: 0.375em;
+        height: 0.375em;
+        top: calc(0.875em - 0.1875em);
+        left: 0.25em;
+      }
+    }
   }
 }

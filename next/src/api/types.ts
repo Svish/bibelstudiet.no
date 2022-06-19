@@ -35,7 +35,7 @@ export interface Week {
   date: string;
   sabbath: string;
   memory: Xml;
-  background: Xml;
+  background: string[];
   days: [
     introduction: Pick<Introduction, 'id' | 'type'>,
     sunday: Pick<Study, 'id' | 'type' | 'title' | 'date'>,

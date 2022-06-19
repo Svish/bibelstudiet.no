@@ -20,7 +20,7 @@ const classes = {
 } as const;
 
 // TODO: Design `right` better... and deal with screen sizes...
-// Make <DateSquare> component?
+// ! Make <DateSquare> component?
 
 export default function Heading({
   variant,
@@ -30,7 +30,7 @@ export default function Heading({
   return (
     <H
       className={clsx(
-        'mb-6 text-opacity-30 flex justify-between',
+        'mb-6 text-opacity-30 flex justify-between gap-2 items-baseline',
         classes[variant],
         className
       )}
@@ -47,7 +47,9 @@ export default function Heading({
         )}
       </div>
       {props.right != null && (
-        <div className="text-xl text-gray-500">{props.right}</div>
+        <div className="text-sm text-gray-500 md:text-lg lg:text-2xl">
+          {props.right}
+        </div>
       )}
     </H>
   );

@@ -81,7 +81,7 @@ export function QuarterCard(props: {
           {title}
         </div>
       </div>
-      <div className="w-[64px] h-[90px] lg:w-[90px] lg:h-[128px] relative flex-shrink-0 ml-5">
+      <div className="w-[64px] h-[90px] lg:w-[90px] lg:h-[128px] relative shrink-0 ml-5">
         {image != null && (
           <Image
             alt=""

@@ -37,6 +37,8 @@ export default function Ref({ children, type, ...props }: Props): ReactElement {
     throw new Error('<r> children must be string');
   }
 
+  // TODO: `aria-label` with full reference?
+
   const ref =
     'xref' in props
       ? props.xref

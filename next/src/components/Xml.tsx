@@ -4,19 +4,18 @@ import { useMemo } from 'react';
 
 import XmlToReact from 'util/XmlToReact';
 
-import Ref from './xml/Ref';
-import List from './xml/List';
+import X from './xml/X';
+import Exercise from './xml/Exercise';
 import Link from './Link';
-
-// TODO: Deal with exercises (ex, x, nested ex)
-//  - Use Context? If context not undefined => child ex?
-//  - How to disable self textarea if children? Call up from child "I exist"?
-// TODO: Deal with class="box"
+import Ref from './xml/Ref';
+import Questions from './xml/Questions';
 
 const parser = new XmlToReact({
   r: Ref,
-  questions: List,
+  questions: Questions,
   a: Link,
+  x: X,
+  ex: Exercise,
 });
 
 interface Props {
